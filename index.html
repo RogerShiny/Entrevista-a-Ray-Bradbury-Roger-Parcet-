@@ -1,0 +1,458 @@
+Demogràcia<!DOCTYPE html>
+<html lang="ca">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marca d'aigua</title>
+  <style>
+    /* Contenidor de la marca d'aigua */
+    .watermark {
+      position: fixed; /* sempre visible */
+      bottom: 15px;    /* separació de la vora */
+      right: 15px;
+      z-index: 9999;   /* sobre altres elements */
+    }
+
+    /* Imatge petita */
+    .watermark img {
+      width: 60px;
+      opacity: 0.6; /* efecte més suau com a marca d'aigua */
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .watermark img:hover {
+      opacity: 1;
+    }
+
+    /* Tooltip (cartell amb text) */
+    .tooltip {
+      visibility: hidden;
+      opacity: 0;
+      width: 220px;
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 8px;
+      position: absolute;
+      bottom: 70px; /* sobre la imatge */
+      right: 0;
+      transition: opacity 0.3s ease;
+      font-size: 14px;
+    }
+
+    /* Fletxeta petita */
+    .tooltip::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      right: 20px;
+      margin-left: -5px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: #222 transparent transparent transparent;
+    }
+
+    /* Quan es passa el ratolí, apareix el cartell */
+    .watermark:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<head>
+  <div class="watermark">
+    <img src="Demogracia.png" alt="Marca d'aigua">
+    <div class="tooltip">Demogràcia. On els pensaments tenen veu i espai.</div>
+  </div>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entrevista a Juame — Perfil i conversa</title>
+  <meta name="description" content="Pàgina d’entrevista elegant i moderna centrada en Juame. Presentació, preguntes i respostes, cites, àudio, vídeo i enllaços per compartir." />
+  <meta property="og:title" content="Entrevista a Juame" />
+  <meta property="og:description" content="Coneix Juame a través d’una entrevista cuidada i visual." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #10172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --ring: rgba(139, 92, 246, .45);
+      --border: #1f2937;
+      --shadow: 0 10px 25px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.25);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-soft: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #7c3aed;
+      --accent-2: #0ea5e9;
+      --ring: rgba(124, 58, 237, .25);
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px rgba(2,6,23,.08), 0 2px 6px rgba(2,6,23,.06);
+    }
+    html, body { height: 100%; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: radial-gradient(1200px 600px at 70% -10%, rgba(34,211,238,.08), transparent 60%), radial-gradient(1000px 500px at 10% -20%, rgba(139,92,246,.08), transparent 50%), var(--bg); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100%, var(--maxw)); margin-inline: auto; padding: 24px; }
+    header.hero { position: relative; overflow: clip; }
+    .hero-card { display:grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00)), var(--card); border: 1px solid var(--border); border-radius: calc(var(--radius) + 6px); box-shadow: var(--shadow); padding: clamp(20px, 4vw, 40px); isolation:isolate; }
+    .badge { display:inline-flex; gap:8px; align-items:center; background: linear-gradient(90deg, rgba(139,92,246,.25), rgba(34,211,238,.25)); color: white; border: 1px solid rgba(255,255,255,.15); padding: 6px 12px; border-radius: 999px; font-weight: 600; letter-spacing:.3px; font-size:12px; text-transform: uppercase; }
+    .hero h1 { font-family: "Playfair Display", serif; font-weight: 700; letter-spacing: -0.02em; font-size: clamp(36px, 5vw, 60px); line-height:1.05; margin: 16px 0 8px; }
+    .hero p.sub { color: var(--muted); font-size: clamp(16px, 1.8vw, 18px); max-width: 60ch; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top: 22px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; border-radius: 12px; padding: 12px 16px; border: 1px solid var(--border); background: linear-gradient(180deg, rgba(124, 58, 237, .16), rgba(14, 165, 233, .12)); color: white; font-weight: 600; transition: transform .12s ease, filter .2s ease; box-shadow: var(--shadow); }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn.secondary { background: var(--card); color: var(--text); }
+    .btn.ghost { background: transparent; border-color: rgba(255,255,255,.2); box-shadow:none; }
+    .portrait { position: relative; aspect-ratio: 4/5; border-radius: calc(var(--radius) + 6px); background: linear-gradient(180deg, rgba(139,92,246,.25), rgba(34,211,238,.25)); padding: 6px; box-shadow: var(--shadow); }
+    .portrait img { width:100%; height:100%; object-fit: cover; border-radius: calc(var(--radius) + 2px); display:block; }
+    .pill { position:absolute; bottom: 10px; left: 10px; background: rgba(17,24,39,.75); color: white; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+
+    /* Sections */
+    section { margin-top: clamp(36px, 6vw, 64px); }
+    .grid { display:grid; gap: 20px; grid-template-columns: repeat(12, 1fr); }
+    .card { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px); }
+
+    /* Q&A */
+    .qa { grid-column: span 7; }
+    details.qa-item { background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)), var(--card); border:1px solid var(--border); border-radius: 14px; padding: 18px 18px; margin-bottom: 12px; transition: border-color .2s ease, background .2s ease; }
+    details[open].qa-item { border-color: var(--accent-2); background: linear-gradient(180deg, rgba(34,211,238,.08), transparent), var(--card); }
+    .qa-item summary { list-style: none; cursor: pointer; font-weight: 700; font-size: 18px; display:flex; align-items:center; justify-content: space-between; }
+    .qa-item summary::-webkit-details-marker { display:none; }
+    .qa-item p { color: var(--muted); margin: 10px 0 0; line-height: 1.7; }
+
+    /* Sidebar */
+    .side { grid-column: span 5; display: grid; gap: 20px; align-content: start; }
+    .stat { display:flex; align-items: center; gap: 14px; padding: 16px; border-radius: 14px; background: linear-gradient(180deg, rgba(124,58,237,.12), rgba(14,165,233,.10)); border:1px solid var(--border); }
+    .stat .num { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+    .quote { font-family: "Playfair Display", serif; font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; }
+    .quote cite { display:block; margin-top: 10px; color: var(--muted); font-style: normal; }
+
+    /* Timeline */
+    .timeline { display:grid; gap: 14px; }
+    .timeline-item { display:grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: start; }
+    .timeline .year { font-weight: 800; color: var(--accent-2); }
+    .timeline .dotline { position: relative; padding-top: 8px; }
+    .timeline .dotline::before { content:""; position: absolute; left: -14px; top: 12px; width: 8px; height: 8px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px rgba(139,92,246,.2); }
+    .timeline .dotline::after { content:""; position: absolute; left: -10px; top: 24px; width: 2px; height: calc(100% - 24px); background: linear-gradient(var(--accent), transparent); opacity:.4; }
+
+    /* Media */
+    .media { display:grid; grid-template-columns: 1.1fr 1fr; gap: 20px; }
+    .audio { display:flex; align-items:center; gap:12px; }
+    .audio .wave { height: 44px; flex: 1; background: repeating-linear-gradient(90deg, rgba(139,92,246,.45) 0 4px, rgba(34,211,238,.45) 4px 8px); border-radius: 10px; filter: blur(.2px) saturate(1.2); opacity: .85; }
+    .video-card { position: relative; overflow:hidden; border-radius: var(--radius); border: 1px solid var(--border); }
+    .video-card img { width:100%; display:block; }
+    .video-card button { position:absolute; inset:0; display:grid; place-items:center; background: rgba(0,0,0,.35); color:white; font-weight:700; border:0; cursor:pointer; font-size: 18px; letter-spacing:.4px; }
+
+    /* Footer */
+    footer { margin-top: 64px; border-top:1px solid var(--border); }
+    .footer-inner { display:flex; align-items:center; justify-content: space-between; gap: 16px; padding: 22px 0; }
+    .brand { font-weight: 800; letter-spacing: .3px; }
+
+    /* Util */
+    .chips { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip { font-size: 12px; border:1px solid var(--border); background: var(--bg-soft); color: var(--text); padding: 6px 10px; border-radius: 999px; }
+    .sr-only { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-card { grid-template-columns: 1fr; }
+      .media { grid-template-columns: 1fr; }
+      .qa { grid-column: span 12; }
+      .side { grid-column: span 12; }
+    }
+
+    /* Print */
+    @media print {
+      .btn, .video-card, .audio .wave, .hero-actions, .share, .theme { display:none !important; }
+      body { background: white; }
+      .card, .hero-card { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero" id="inici">
+      <div class="hero-card" data-animate>
+        <div>
+          <span class="badge">Entrevista exclusiva</span>
+       <h1>  <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent;">Ray Bradbury:</span> "Ara un s'explota a ell mateix i creu que s'està realizant" </h1>
+          <p class="sub">Una conversa que acarícia els variats pensaments que l'històric escriptor guarda sobre la realitat i l'entorn que avui ens abraça.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#entrevista" aria-label="Anar a l'entrevista">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14m0 0l-7-7m7 7l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Comença a llegir
+            </a>
+            <button class="btn secondary share" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12v7a1 1 0 001 1h14a1 1 0 001-1v-7M16 6l-4-4-4 4M12 2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Comparteix
+            </button>
+            <button class="btn ghost theme" type="button" aria-pressed="false">Mode clar</button>
+          </div>
+          <div style="margin-top:18px" class="chips" aria-label="Etiquetes">
+            <span class="chip">Biografia</span>
+            <span class="chip">Societat</span>
+            <span class="chip">Tecnologia</span>
+            <span class="chip">Futur</span>
+          </div>
+        </div>
+<figure class="portrait" aria-label="Retrat de Ray Bradbury">
+  <img src=Ray_bradbuny.jpg"
+       alt="Fotografia de Ray Bradbury l'any 1978" />
+  <figcaption class="pill">Ray Bradbury, aquest agost, posant davant del seu garatge a Los Angeles.</figcaption>
+</figure>
+      </div>
+    </header>
+                       <section id="Preàmbul">
+                                           <h1 style="margin:0 0 8px; font-size:28px">Preàmbul</h1>
+<p> Bradbury és un escriptor que emana el sentit més pur de ciència ficció, és mestre de l'art de donar veu i soroll al futur mut, silenci del qual deixa incòmode a la nostra societat. Las realitats que construeix no són obra única de la imaginació ni simples somnis de la follia, sinó que es sostenen en els fonaments d'un present que ha estat despollat i profundament analitzat amb un estil audaç i genial per l'escriptor. Les seves idees són dibuixades amb un estil literari brillant que deixen al lector menjat per un patró de paraules perfectament teixit i que deixa escavar profundament els conceptes que es presenten. És tan accelarada la materialització d'allò que presentava en els seus llibres, que alguns el poden tractar de visionari. </p>
+  </section>
+    <section id="entrevista">
+      <div class="grid">
+        <!-- Q&A principal -->
+        <div class="qa">
+          <div class="card" data-animate>
+            <h2 style="margin:0 0 8px; font-size:28px">Entrevista</h2>
+            <p style="color:var(--muted); margin:0 0 16px">Fragments seleccionats de la conversa corresponent.</p>
+
+            <details class="qa-item" open>
+              <summary>Es va graduar a l'Universitat de Los Angeles al 1938 i ulteriorment es podria dir que la vostra vida acaba aquí. Què va passar perquè es convertís en l'escriptor que es llegeix en escoles?<span aria-hidden="true">➕</span></summary>
+              <p>Sí, la meva formació formal acaba així, però es pot dir que vaig aplicar-me com "aprenent de la vida" venent diaris a les catonades del carrers. En aquell temps llegia extensament els grans escriptors de ciènica ficció i la meva admiració es va vessar en un compromís molt fort per ser pare d'obres semblants. Vaig començar a e</p>
+            </details>
+
+            <details class="qa-item">
+              <summary>Com s'inspira per ?<span aria-hidden="true">➕</span></summary>
+              <p>Aprendre a dir que no per protegir el focus. Prioritzar pocs projectes i fer-los molt bé ha estat decisiu.</p>
+            </details>
+
+            <details class="qa-item">
+              <summary>Quina és la teva filosofia de treball?<span aria-hidden="true">➕</span></summary>
+              <p>Transparència radical, feedback freqüent i objectius clars. L’èxit és conseqüència d’això.</p>
+            </details>
+
+            <details class="qa-item">
+              <summary>Quins projectes t’il·lusionen ara mateix?<span aria-hidden="true">➕</span></summary>
+              <p>Una plataforma educativa oberta i un programa de mentoria per a joves creadors i creadores.</p>
+            </details>
+          </div>
+
+          <!-- Àudio entrevista -->
+          <div class="card" data-animate>
+            <h3 style="margin:0 0 10px">Escolta un fragment</h3>
+            <div class="audio">
+              <div class="wave" aria-hidden="true"></div>
+              <audio controls style="width: 280px">
+                <source src="" type="audio/mpeg" />
+                El teu navegador no suporta l’àudio HTML5.
+              </audio>
+            </div>
+            <p style="color:var(--muted); margin-top: 10px; font-size: 14px">Puja un fitxer .mp3 o .wav al tag <code>&lt;source&gt;</code>.</p>
+          </div>
+        </div>
+
+        <!-- Lateral -->
+        <aside class="side">
+          <div class="card" data-animate>
+            <div class="stat">
+              <div class="num">45’</div>
+              <div>
+                <div style="font-weight:700">Durada total</div>
+                <div style="color:var(--muted); font-size: 14px">de la conversa</div>
+              </div>
+            </div>
+            <blockquote class="quote" style="margin: 14px 0 0;">
+              “El problema neix quan la veritat sòlida s'enfonsa en la líquida.”
+              <cite>Sobre la religió.</cite>
+            </blockquote>
+          </div>
+
+          <div class="card" data-animate>
+            <h3 style="margin:0 0 10px">Fites</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="year">2018</div>
+                <div class="dotline">
+                  <div style="font-weight:700">Primer projecte públic</div>
+                  <div style="color:var(--muted); font-size:14px">Llançament d’una app social local.</div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="year">2021</div>
+                <div class="dotline">
+                  <div style="font-weight:700">Equip de 10 persones</div>
+                  <div style="color:var(--muted); font-size:14px">Creixement i consolidació.</div>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="year">2025</div>
+                <div class="dotline">
+                  <div style="font-weight:700">Programa de mentoria</div>
+                  <div style="color:var(--muted); font-size:14px">Impulsant talent emergent.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" data-animate>
+            <h3 style="margin:0 10px 10px 0">Vídeo</h3>
+            <div class="video-card">
+              <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Miniatura del vídeo d'entrevista" />
+              <button type="button" class="open-video">Reprodueix</button>
+            </div>
+            <p style="color:var(--muted); font-size: 14px; margin-top:10px">Substitueix per l’enllaç de YouTube/Vimeo a <code>openVideo()</code>.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="contacte">
+      <div class="card" data-animate>
+        <h2 id="contacte" style="margin:0 0 8px; font-size: 26px">Contacte i actualitzacions</h2>
+        <form id="form" class="grid" style="grid-template-columns: repeat(12, 1fr); gap: 16px;">
+          <div style="grid-column: span 6;">
+            <label for="nom" class="sr-only">Nom</label>
+            <input id="nom" name="nom" placeholder="El teu nom" class="input" required />
+          </div>
+          <div style="grid-column: span 6;">
+            <label for="email" class="sr-only">Correu electrònic</label>
+            <input id="email" name="email" placeholder="Correu electrònic" type="email" class="input" required />
+          </div>
+          <div style="grid-column: span 12;">
+            <label for="missatge" class="sr-only">Missatge</label>
+            <textarea id="missatge" name="missatge" placeholder="Missatge o proposta d’entrevista" rows="4" class="input" style="resize:vertical"></textarea>
+          </div>
+          <div style="grid-column: span 12; display:flex; gap:10px; align-items:center;">
+            <button class="btn" type="submit">Envia</button>
+            <span id="form-status" style="color:var(--muted); font-size: 14px"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="brand">Entrevista a Ray Bradbury</div>
+        <nav class="chips">
+          <a class="chip" href="#inici">Inici</a>
+          <a class="chip" href="#entrevista">Q&A</a>
+          <button class="chip share" type="button">Comparteix</button>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <dialog id="videoModal" style="border:0; border-radius: 16px; max-width: 900px; width: calc(100% - 28px); box-shadow: var(--shadow); background: var(--card); color: var(--text);">
+    <div style="display:flex; justify-content: space-between; align-items:center; padding: 10px 14px; border-bottom: 1px solid var(--border);">
+      <strong>Vídeo de l’entrevista</strong>
+      <form method="dialog"><button class="chip" style="cursor:pointer">Tanca</button></form>
+    </div>
+    <div style="padding: 10px 14px">
+      <div style="position:relative; overflow:hidden; border-radius: 12px; aspect-ratio: 16/9; background:#000">
+        <iframe id="videoFrame" title="Vídeo d’entrevista" width="100%" height="100%" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute; inset:0; border:0;"></iframe>
+      </div>
+    </div>
+  </dialog>
+
+  <style>
+    /* Inputs */
+    .input { width:100%; padding: 14px 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg-soft); color: var(--text); outline: none; transition: box-shadow .15s ease, border-color .15s ease; }
+    .input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring); }
+
+    /* Animacions suaus d’entrada */
+    [data-animate] { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s ease; }
+    [data-animate].visible { opacity: 1; transform: translateY(0); }
+  </style>
+
+  <script>
+    // Desplaçament suau
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // Toggle tema clar/fosc
+    const themeBtn = document.querySelector('.theme');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      root.setAttribute('data-theme', savedTheme);
+      themeBtn.setAttribute('aria-pressed', savedTheme === 'light');
+      themeBtn.textContent = savedTheme === 'light' ? 'Mode fosc' : 'Mode clar';
+    }
+    themeBtn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') !== 'light';
+      root.setAttribute('data-theme', isLight ? 'light' : 'dark');
+      themeBtn.setAttribute('aria-pressed', isLight);
+      themeBtn.textContent = isLight ? 'Mode fosc' : 'Mode clar';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Compartir
+    function share() {
+      const data = { title: 'Entrevista a Juame', text: 'Dóna un cop d’ull a aquesta entrevista!', url: window.location.href };
+      if (navigator.share) {
+        navigator.share(data).catch(() => {/* ignorat */});
+      } else {
+        navigator.clipboard.writeText(data.url).then(() => {
+          alert('Enllaç copiat!');
+        });
+      }
+    }
+    document.querySelectorAll('.share').forEach(b => b.addEventListener('click', share));
+
+    // Form: validació mínima
+    const form = document.getElementById('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        status.textContent = 'Introdueix un correu vàlid.';
+        status.style.color = '#ef4444';
+        return;
+      }
+      status.textContent = 'Gràcies! Hem rebut el teu missatge.';
+      status.style.color = 'var(--muted)';
+      form.reset();
+    });
+
+    // Modal de vídeo
+    const videoModal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+    function openVideo() {
+      // Substitueix l’URL pel teu vídeo
+      const url = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+      videoFrame.src = url;
+      if (typeof videoModal.showModal === 'function') videoModal.showModal(); else alert('Obre: ' + url);
+    }
+    document.querySelector('.open-video').addEventListener('click', openVideo);
+    videoModal.addEventListener('close', () => { videoFrame.src = ''; });
+
+    // Animacions d’entrada al fer scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: .2 });
+    document.querySelectorAll('[data-animate]').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
